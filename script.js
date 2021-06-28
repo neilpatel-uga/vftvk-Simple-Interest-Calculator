@@ -1,28 +1,24 @@
-function compute()
-{
-    //declaring the values 
-    p = document.getElementById("principal").value;
-    var principal = document.getElementById("principal").value;
-    var rate = document.getElementById("rate").value;
-    var years = document.getElementById("years").value;
-    var interest = principal * years * rate /100;
-    var year = new Date().getFullYear()+parseInt(years);
-
-    //Text the user will recieve when the inputs are typed im
+function compute() {
+    //Get the values and calculate 
+    var principal = parseFloat(document.getElementById("principal").value);
+    var rate = parseFloat(document.getElementById("rate").value);
+    var years = parseInt(document.getElementById("years").value);
+    var interest = principal * years * rate / 100;
+    var yearInTheFuture = new Date().getFullYear() + years;
+    //Create the Interest text
     document.getElementById("result").innerHTML = "Interest : If you deposit <mark>" + principal + "</mark>,<br/>" +
-    "at an interest rate of <mark>" + rate + "</mark>,<br/>" +
-    "You will receive an amount of <mark>" + interest + "</mark>,<br/> " +
-    "in  <mark>" + year + "</mark>";
+        "at an interest rate of <mark>" + rate + "</mark>,<br/>" +
+        "You will receive an amount of <mark>" + interest + "</mark>,<br/> " +
+        "in the year <mark>" + yearInTheFuture + "</mark>";
 
 }
 
-//updates the rate of the value
-function updateRate() 
-{
-    var rateval = document.getElementById("rate").value;
-    document.getElementById("rate_val").innerText=rateval;
+//update ther ate value
+function getSliderValue() {
+    document.getElementById("rateSpan").innerHTML = document.getElementById("rate").value;
 }
-//ensures that the user enters a legitimate and non-negative number
+
+//Check for positive values
 function validateAmount() {
     var principal = document.getElementById("principal").value;
     var biggerThanZero = parseInt(principal) > 0;
@@ -31,4 +27,4 @@ function validateAmount() {
         document.getElementById("principal").focus();
     }
 
-} 
+}
