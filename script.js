@@ -1,6 +1,34 @@
 function compute()
 {
+    //declaring the values 
     p = document.getElementById("principal").value;
-    
+    var principal = document.getElementById("principal").value;
+    var rate = document.getElementById("rate").value;
+    var years = document.getElementById("years").value;
+    var interest = principal * years * rate /100;
+    var year = new Date().getFullYear()+parseInt(years);
+
+    //Text the user will recieve when the inputs are typed im
+    document.getElementById("result").innerHTML = "Interest : If you deposit <mark>" + principal + "</mark>,<br/>" +
+    "at an interest rate of <mark>" + rate + "</mark>,<br/>" +
+    "You will receive an amount of <mark>" + interest + "</mark>,<br/> " +
+    "in  <mark>" + year + "</mark>";
+
 }
-        
+
+//updates the rate of the value
+function updateRate() 
+{
+    var rateval = document.getElementById("rate").value;
+    document.getElementById("rate_val").innerText=rateval;
+}
+//ensures that the user enters a legitimate and non-negative number
+function validateAmount() {
+    var principal = document.getElementById("principal").value;
+    var biggerThanZero = parseInt(principal) > 0;
+    if (!biggerThanZero) {
+        alert("Enter a positive number");
+        document.getElementById("principal").focus();
+    }
+
+} 
